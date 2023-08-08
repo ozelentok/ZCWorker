@@ -1,0 +1,3 @@
+[submodule "app/src/main/cpp/ZControl"]
+	path = app/src/main/cpp/ZControl
+	url = https://github.com/ozelentok/ZControl
