@@ -38,6 +38,6 @@ extern "C" JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_stopWorke
   } catch (const std::exception &e) {
     throw_java_exception(env, std::string("Error on stopping worker: ") + e.what());
   } catch (...) {
-    throw_java_exception(env, "Unknown on stopping worker");
+    throw_java_exception(env, "Unknown Error on stopping worker");
   }
 }
