@@ -4,6 +4,7 @@ import android.app.*
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.IBinder
+import androidx.core.content.res.ResourcesCompat
 import ozelentok.zcworker.Utils.showErrorToast
 import ozelentok.zcworker.Utils.toBitmap
 
@@ -20,7 +21,9 @@ class KeepAliveService : Service() {
             Intent(this, MainActivity::class.java),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        val appIcon: Drawable = resources.getDrawable(R.mipmap.ic_launcher)
+        val appIcon: Drawable = ResourcesCompat.getDrawable(
+            resources,
+            R.mipmap.ic_launcher, null)!!
         val builder: Notification.Builder = Notification.Builder(this, CHANNEL_ID)
             .setContentTitle("ZCWorker Active")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
