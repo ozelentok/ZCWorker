@@ -10,7 +10,7 @@ void throw_java_exception(JNIEnv *env, const std::string &what) {
   env->ThrowNew(java_exception_class, what.c_str());
 }
 
-JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_connectWorker(JNIEnv *env, jobject, jstring host, jint port) {
+extern "C" JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_connectWorker(JNIEnv *env, jobject, jstring host, jint port) {
   try {
     const char *host_c = env->GetStringUTFChars(host, NULL);
     std::string host_str = std::string(host_c);
@@ -23,13 +23,13 @@ JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_connectWorker(JNIEnv
   }
 }
 
-JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_work(JNIEnv *env, jobject) {
+extern "C" JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_work(JNIEnv *env, jobject) {
   if (worker_ptr) {
     worker_ptr->work();
   }
 }
 
-JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_stopWorker(JNIEnv *env, jobject) {
+extern "C" JNIEXPORT void JNICALL Java_ozelentok_zcworker_MainActivity_stopWorker(JNIEnv *env, jobject) {
   try {
     if (worker_ptr) {
       worker_ptr->stop();
