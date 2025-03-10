@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                 startService(Intent(this@MainActivity, KeepAliveService::class.java))
                 stopButton.isEnabled = true
             }
-            work()
+            waitOnWorker()
             runOnUiThread {
                 disableWakeLock()
                 stopService(Intent(this@MainActivity, KeepAliveService::class.java))
@@ -142,6 +142,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     external fun connectWorker(host: String?, port: Int)
-    external fun work()
+    external fun waitOnWorker()
     external fun stopWorker()
 }
