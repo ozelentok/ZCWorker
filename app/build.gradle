@@ -10,11 +10,11 @@ android {
         applicationId 'ozelentok.zcworker'
         minSdk 30
         targetSdk 36
-        compileSdk 36
+        compileSdk = 36
         buildToolsVersion = '36.1.0'
         versionCode 6
         versionName '1.1.1'
-        archivesBaseName = "ZCWorker-$versionName"
+        base.archivesName = "ZCWorker-$versionName"
         externalNativeBuild {
             cmake {
                 arguments '-DANDROID_STL=c++_static',
