@@ -13,6 +13,7 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.concurrent.thread
+import androidx.core.net.toUri
 
 
 class MainActivity : AppCompatActivity() {
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         try {
             val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
             intent.addCategory("android.intent.category.DEFAULT")
-            intent.data = Uri.parse(String.format("package:%s", applicationContext.packageName))
+            intent.data = String.format("package:%s", applicationContext.packageName).toUri()
             startActivityForResult(intent, manageStorageRequestCode)
         } catch (e: java.lang.Exception) {
             Log.e("ZCWorker", "Failed to open file management permissions", e)
